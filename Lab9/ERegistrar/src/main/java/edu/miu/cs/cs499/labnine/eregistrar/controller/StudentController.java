@@ -69,12 +69,15 @@ public class StudentController {
         model.addAttribute("student",student);
         return "secure/student/update";
     }
-//
-//    @GetMapping(value = {"/eregistrar/student/search", "/student/search"})
-//    public ModelAndView searchStudents(@RequestParam String searchString) {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("searchString", searchString);
-//        modelAndView.setViewName("student/list");
-//        return modelAndView;
-//    }
+
+    @GetMapping(value = {"/eregistrar/student/search", "/student/search"})
+    public ModelAndView searchStudents(@RequestParam String searchString) {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Student>students = studentService.searchStudents(searchString);
+        modelAndView.addObject("students", students);
+        modelAndView.addObject("searchString", searchString);
+        modelAndView.addObject("studentCount", students.size());
+        modelAndView.setViewName("student/list");
+        return modelAndView;
+    }
 }

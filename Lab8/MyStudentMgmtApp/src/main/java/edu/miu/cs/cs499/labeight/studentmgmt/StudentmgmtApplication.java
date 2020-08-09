@@ -40,11 +40,6 @@ public class StudentmgmtApplication implements CommandLineRunner {
         Student saveS1 = saveStudent(s1);
         Student saveS2 = saveStudent(s2);
 
-        List<Student>sts = new ArrayList<>();
-        sts.add(s1);
-        sts.add(s2);
-        //System.out.println(saveS1);
-        //create classroom
         Classroom cr1 = new Classroom("McLaughlin building", "M105");
         Classroom cr2 = new Classroom("Verrill Hall", "V29");
         Classroom cr3 = new Classroom("Dreier Building", "#3");

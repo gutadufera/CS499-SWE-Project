@@ -37,7 +37,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> searchStudents(String string) {
-        //ToDo
-        return null;
+        if(string instanceof String){
+            string = string.toLowerCase();
+        }
+        return studentRepository.findAllByStudentNumberContainingOrFirstNameContainingOrMiddleNameContainingOrLastNameContaining(
+                string, string, string, string);
     }
 }

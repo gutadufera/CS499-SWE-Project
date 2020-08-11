@@ -1,0 +1,34 @@
+package edu.cs.cs499lab10.lesson15labten.q6;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import edu.cs.cs499lab10.lesson15labten.ArrayFlattener;
+import edu.cs.cs499lab10.lesson15labten.service.ArrayFlattenerService;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+
+public class ArrayFlattenerTest {
+    private ArrayFlattener arrayFlattener;
+    private ArrayFlattenerService arrayFlattenerService = mock(ArrayFlattenerService.class);
+
+    @Before
+    public void setUp() throws Exception {
+        this.arrayFlattener = new ArrayFlattener(arrayFlattenerService);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        this.arrayFlattener = null;
+    }
+
+    @Test
+    public void arrayFlattenerTest() {
+        int[][] input = new int[][]{new int[]{1, 3}, new int[]{0}, new int[]{4, 5, 9}};
+        int[] expected = new int[]{1, 3, 0, 4, 5, 9};
+        int[] actual = this.arrayFlattener.arrayFlattener(input);
+        assertArrayEquals(expected, actual);
+    }
+}
